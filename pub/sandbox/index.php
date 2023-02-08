@@ -9,10 +9,10 @@
 <body>
     <form action="" method="post" enctype="multipart/form-data">
         <label for="uploadedFileInput">
-            Wybierz plik do wgrania na serwer
-        </label>
-        <input type="file" name="uploadedZile" id="uploadedFileInput"><br>
-        <input type="submit" value="Wyslij plik" name="submit"><br>
+            Wybierz plik do wgrania na serwer:
+        </label><br>
+        <input type="file" name="uploadedFile" id="uploadedFileInput"><br>
+        <input type="submit" value="Wyślij plik" name="submit"><br>
     </form>
 
     <?php
