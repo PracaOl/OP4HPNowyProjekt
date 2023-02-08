@@ -11,7 +11,7 @@
         <label for="uploadedFileInput">
             Wybierz plik do wgrania na serwer:
         </label><br>
-        <input type="file" name="uploadedFile" id="uploadedFileInput"><br>
+        <input type="file" name="uploadedFile" id="uploadedFileInput" required><br>
         <input type="submit" value="Wyślij plik" name="submit"><br>
     </form>
 
@@ -24,6 +24,14 @@
 
         $sourceFileName = $_FILES['uploadedFile']['name'];
 
+        $sourceFileExtension = pathinfo($sourceFileName, PATHINFO_EXTENSION);
+
+        $sourceFileExtension = strtolower($sourceFileExtension);
+
+        $newFileName = hash("sha256", $sourceFileName) . hrtime(true) . "." . $sourceFileExtension;
+
+        $targetURL = $targetDir . $newFileName;
+
         $tempURL = $_FILES['uploadedFile']['tmp_name'];
 
         $imgInfo = getimagesize($tempURL);
@@ -31,7 +39,7 @@
             die("ERROR: Przekazany plik nie jest obrazem!");
         }
 
-        $targetURL = $targetDir . $sourceFileName;
+        //$targetURL = $targetDir . $sourceFileName;
 
         if (file_exists($targetURL)) 
         {
