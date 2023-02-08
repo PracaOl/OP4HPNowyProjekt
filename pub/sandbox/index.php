@@ -24,7 +24,12 @@
         $sourceFileName = $_FILES['uploadedFile']['name'];
         $tempURL = $_FILES['uploadedFile']['tmp_name'];
         $targetURL = $targetDir . $sourceFileName;
+        if (file_exists($targetURL)) 
+        {
+            die("BŁĄD: Podany plik już istnieje!!");
+        }
         move_uploaded_file($tempURL, $targetURL);
+        echo "Plik został poprawnie wgrany na serwer";
     }
     ?>
 </body>
