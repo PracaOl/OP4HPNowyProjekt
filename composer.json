@@ -1,0 +1,15 @@
+{
+    "name": "1110862/op4hp-nowy-projekt",
+    "autoload": {
+        "psr-4": {
+            "1110862\\Op4hpNowyProjekt\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "PracaOl",
+            "email": "oliwer.pietrzycki@op.pl"
+        }
+    ],
+    "require": {}
+}
