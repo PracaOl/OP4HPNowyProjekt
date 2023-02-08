@@ -1,9 +1,0 @@
-{
-    "name": "opraca/cms",
-    "autoload": {
-        "psr-4": {
-            "Opraca\\Cms\\": "src/"
-        }
-    },
-    "require": {}
-}
