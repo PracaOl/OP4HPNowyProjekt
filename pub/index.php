@@ -18,3 +18,7 @@ require('./../src/config.php');
 
 
 ?>
+
+<?php
+var_dump(post::getLast());
+?>
