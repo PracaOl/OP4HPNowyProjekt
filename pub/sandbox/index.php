@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -35,7 +35,8 @@
 
         //$sourceFileExtension = strtolower($sourceFileExtension);
 
-        $newFileName = hash("sha256", $sourceFileName) . hrtime(true) . ".webp";
+        $hash = hash("sha256", $sourceFileName . hrtime(true) ); 
+        $newFileName = $hash . ".webp";
         
         $imageString = file_get_contents($tempURL);
 
@@ -53,6 +54,13 @@
         //move_uploaded_file($tempURL, $targetURL);
 
         imagewebp($gdImage, $targetURL);
+
+        $db = new mysqli('localhost', 'root', '', 'cmse');
+        $query = $db->prepare("INSERT INTO post VALUES(NULL, ?, ?)");
+        $dbTimestamp = date("Y-m-d H:i:s");
+        $query->bind_param("ss", $dbTimestamp, $hash);
+        if(!$query->execute())
+            die("Błąd zapisu do bazy danych");
 
         echo "Plik został poprawnie wgrany na serwer";
     }
