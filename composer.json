@@ -11,5 +11,7 @@
             "email": "oliwer.pietrzycki@op.pl"
         }
     ],
-    "require": {}
+    "require": {
+        "steampixel/simple-php-router": "^0.7.1"
+    }
 }
