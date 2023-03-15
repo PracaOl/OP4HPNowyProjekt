@@ -21,7 +21,7 @@ Route::add('/upload', function() {
     if(isset($_POST['submit']))  {
         Post::upload($_FILES['uploadedFile']['tmp_name']);
     }
-    header("Location: http://localhost/OP4HPNowyProjekt/pub");
+    header("Location: http://localhost/op4hpnowyprojekt/pub/");
 }, 'post');
 Route::run('/OP4HPNowyProjekt/pub');
 

@@ -3,11 +3,13 @@ class Post {
     private int $id;
     private string $filename;
     private string $timestamp;
+    private string $title;  //usun jak niedziala
 
-    function __construct(int $i, string $f, string $t) {
+    function __construct(int $i, string $f, string $t, string $ti) {
         $this->id = $i;
         $this->filename = $f;
         $this->timestamp = $t;
+        $this->title = $ti;  //usun jak niedziala
     }
 
     public function getFilename() : string {
@@ -18,13 +20,17 @@ class Post {
         return $this->timestamp;
     }
 
+    public function getTitle() : string {
+        return $this->title;
+    }
+
     static function getLast() : Post {
         global $db;
         $query = $db->prepare("SELECT * FROM post ORDER BY timestamp DESC LIMIT 1");
         $query->execute();
         $result = $query->get_result();
         $row = $result->fetch_assoc();
-        $p = new Post($row['id'], $row['filename'], $row['timestamp']);
+        $p = new Post($row['id'], $row['filename'], $row['timestamp'], $row['title']);
         return $p;
     }
 
@@ -38,7 +44,7 @@ class Post {
         $postsArray = array();
         while($row = $result->fetch_assoc()) 
         {
-            $post = new Post($row['id'], $row['filename'], $row['timestamp']);
+            $post = new Post($row['id'], $row['filename'], $row['timestamp'], $row['title']);
             array_push($postsArray, $post);
         }
         return $postsArray;
@@ -61,9 +67,10 @@ class Post {
         $gdImage = @imagecreatefromstring($imageString);
         imagewebp($gdImage, $newFileName);
         global $db;
-        $query = $db->prepare("INSERT INTO post VALUES(NULL, ?, ?)");
+        $query = $db->prepare("INSERT INTO post VALUES(NULL, ?, ?, ?)");
         $dbTimestamp = date("Y-m-d H:i:s");
-        $query->bind_param("ss", $dbTimestamp, $newFileName);
+        $titleName = $_POST["memeTitle"];
+        $query->bind_param("sss", $dbTimestamp, $newFileName, $titleName);
             if(!$query->execute())
                 die("Błąd zapisu do bazy danych");
     }
