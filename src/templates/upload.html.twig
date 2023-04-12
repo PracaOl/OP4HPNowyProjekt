@@ -1,14 +1,20 @@
 {% include 'header.html.twig' %}
 <div id="pageContainer">
     <h1>{{ pageTitle|default("Brak tytułu podstrony")}}</h1>
+    {% if user is defined %}
+    <div id="loggedUser">Zalogowany użytkownik: {{ user.getName() }} </div>
+    {% endif %}
     <form action="" method="post" enctype="multipart/form-data">
-        <label for="memeTitleInput">
+        <label for="TitleInput">
             Wpisz jak bedzie nazywac sie mem:
         </label><br>
-        <input type="text" name="memeTitle" id="memeTitleInput" maxlength="25" required><br>
+        <input type="text" name="Title" id="TitleInput" maxlength="25" required><br>
         <label for="uploadedFileInput">
             Wybierz plik do wgrania na serwer:
         </label><br>
+        {% if user is defined %}
+        <input type="hidden" name="userId" value={{ user.getId() }}>
+        {% endif %}
         <input type="file" name="uploadedFile" id="uploadedFileInput" required><br>
         <input type="submit" value="Wyślij plik" name="submit"><br>
     </form>
