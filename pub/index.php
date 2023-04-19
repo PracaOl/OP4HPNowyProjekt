@@ -46,8 +46,7 @@ Route::add('/login', function() {
                 if(User::login($_POST['email'], $_POST['password'])) {
             header("Location: http://localhost/op4hpnowyprojekt/pub");
         } else {
-            $twigData = array('pageTitle' => "Zaloguj użytkownika",
-                                "message" => "Niepoprawny login lub hasło!");
+            $twigData = array('pageTitle' => "Zaloguj użytkownika", "message" => "Niepoprawny login lub hasło!");
             $twig->display("login.html.twig", $twigData);
         }
     }

@@ -37,7 +37,7 @@ class User {
 
     public static function login(string $email, string $password) : bool {
         global $db;
-        $query = $db->prepare("SELECT * FROM user WHERE login = ? LIMIT 1");
+        $query = $db->prepare("SELECT * FROM user WHERE email = ? LIMIT 1");
         $query->bind_param('s', $email);
         $query->execute();
         $result = $query->get_result();

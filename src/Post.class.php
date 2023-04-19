@@ -78,7 +78,7 @@ class Post {
         imagewebp($gdImage, $newFileName);
 
         global $db;
-        $query = $db->prepare("INSERT INTO post VALUES(NULL, ?, ?, ?, ?)");
+        $query = $db->prepare("INSERT INTO post VALUES(NULL, ?, ?, ?, ?, 0)");
         $dbTimestamp = date("Y-m-d H:i:s");
         $query->bind_param("sssi", $dbTimestamp, $newFileName, $title, $userId);
         if(!$query->execute())
