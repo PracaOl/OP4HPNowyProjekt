@@ -13,6 +13,14 @@ Route::add('', function() {
     $twig->display("index.html.twig", $twigData);
 });
 
+Route::add('/upvote/([0-9]*)', function($id){
+    global $twig;
+  //$id posta do upvote
+}, 'post');
+Route::add('/downvote/([0-9]*)', function($id){
+    global $twig;
+  //$id posta do downVote
+}, 'post');
 Route::add('/upload', function() {
     global $twig;
     $twigData = array("pageTitle" => "Wgraj mema");
