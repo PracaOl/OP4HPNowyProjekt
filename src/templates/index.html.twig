@@ -10,9 +10,7 @@
         <img src="{{ post.getFilename() }}">
         <a href="index/plus/{{vote.getUserId()}}">PLUS</a>
         <a href="index/minus/{{vote.getUserId()}}">MINUS</a>
-        <form action="" method="post">
-            <h6>Total Votes: {{post.getScore() }}</h6>
-        </form>
+        <h6>Total Votes: {{post.getScore() }}</h6>
         <h6>Autor: {{post.getAuthorName() }}</h6>
         <h6>Data dodania: {{ post.getTimestamp() }}</h6>
     </div>
