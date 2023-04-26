@@ -8,9 +8,9 @@
     <div id="post">
         <h1>{{ post.getTitle() }}</h1>
         <img src="{{ post.getFilename() }}">
+        <a href="index/plus/{{vote.getUserId()}}">PLUS</a>
+        <a href="index/minus/{{vote.getUserId()}}">MINUS</a>
         <form action="" method="post">
-            <input type="button" name="plus" value="Plus"">
-            <input type="button" name="minus" value="Minus">
             <h6>Total Votes: {{post.getScore() }}</h6>
         </form>
         <h6>Autor: {{post.getAuthorName() }}</h6>

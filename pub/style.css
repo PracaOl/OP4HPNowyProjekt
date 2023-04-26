@@ -50,3 +50,7 @@ img.thumbnail {
 #passwordInput {
     margin-bottom: 0.2vw;
 }
+
+div#loggedUser {
+    font-style: italic;
+}

@@ -1,5 +1,20 @@
 <?php
 class Vote {
+    private int $postId;
+    private int $userId;
+
+    function __construct() {
+        $this->postId;
+        global $db;
+        $this->userId;
+    }
+
+    public function getPostId() : int {
+        return $this->postId;
+    }
+    public function getUserId() : string {
+        return $this->userId;
+    }
 
     public static function plus(int $postId, int $userId) : bool {
         global $db;

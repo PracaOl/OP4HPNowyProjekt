@@ -13,13 +13,23 @@ Route::add('', function() {
     $twig->display("index.html.twig", $twigData);
 });
 
-Route::add('/upvote/([0-9]*)', function($id){
+Route::add('/plus/([0-9]*)', function($id){
     global $twig;
   //$id posta do upvote
+    if(Vote::plus($postId, $userId)) {
+        header("Location: http://localhost/op4hpnowyprojekt/pub/admin/");
+    } else {
+        die("Nie udało się zostawić oceny posta");
+    }
 }, 'post');
-Route::add('/downvote/([0-9]*)', function($id){
+Route::add('/minus/([0-9]*)', function($id){
     global $twig;
   //$id posta do downVote
+    if(Vote::minus($id)) {
+        header("Location: http://localhost/op4hpnowyprojekt/pub/admin/");
+    } else {
+        die("Nie udało się zostawić oceny posta");
+    }
 }, 'post');
 Route::add('/upload', function() {
     global $twig;
