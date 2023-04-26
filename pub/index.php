@@ -15,11 +15,11 @@ Route::add('', function() {
 
 Route::add('/plus/([0-9]*)', function($id) {
     Vote::plus($id, $_SESSION['user']->getId());
-    header("Location: http://localhost/cmse/pub/");
+    header("Location: http://localhost/op4hpnowyprojekt/pub/");
 });
 Route::add('/minus/([0-9]*)', function($id) {
     Vote::minus($id, $_SESSION['user']->getId());
-    header("Location: http://localhost/cmse/pub/");
+    header("Location: http://localhost/op4hpnowyprojekt/pub/");
 });
 
 Route::add('/upload', function() {

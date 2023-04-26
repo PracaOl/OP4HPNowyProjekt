@@ -6,11 +6,23 @@
     {% endif %}
     {% for post in postArray %}
     <div id="post">
-        <h1>{{ post.getTitle() }}</h1>
+        <h2>{{ post.getTitle() }} </h2>
         <img src="{{ post.getFilename() }}">
-        <a href="index/plus/{{vote.getUserId()}}">PLUS</a>
-        <a href="index/minus/{{vote.getUserId()}}">MINUS</a>
-        <h6>Total Votes: {{post.getScore() }}</h6>
+        {% if post.getVote() == -1 %}
+        <button disabled>Minus</button>
+        {% else %}
+        <a href="minus/{{post.getId()}}">
+        <button>Minus</button>
+        </a>
+        {% endif %}
+        {% if post.getVote() == 1 %}
+        <button disabled>Plus</button>
+        {% else %}
+        <a href="plus/{{post.getId()}}">
+        <button>Plus</button>
+        </a><br>
+        Suma Głosów: {{post.getScore() }}
+        {% endif %}        
         <h6>Autor: {{post.getAuthorName() }}</h6>
         <h6>Data dodania: {{ post.getTimestamp() }}</h6>
     </div>
