@@ -1,11 +1,22 @@
 body {
     margin: 0;
     padding: 0;
+    background-color: rgb(218, 253, 253);
 }
 
 div#pageContainer {
     max-width: 960px;
     margin: 0 auto;
+}
+
+div.MoreStyle {
+    background-color: lightgray;
+    border: solid 0.5vw rgb(190, 190, 190);
+}
+
+div.MoreStyle td {
+    padding-right: 1vw;
+    text-align: center;
 }
 
 h1 {
@@ -16,6 +27,7 @@ div#post {
     background-color: lightgray;
     padding: 20px;
     margin-bottom: 20px;
+    border: solid 0.5vw rgb(190, 190, 190);
 }
 
 div#post img {
@@ -29,4 +41,12 @@ div#loggedUser {
 
 img.thumbnail {
     max-width: 300px;
+}
+
+#formstyle {
+    text-align: center;
+}
+
+#passwordInput {
+    margin-bottom: 0.2vw;
 }
